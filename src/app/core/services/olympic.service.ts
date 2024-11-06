@@ -47,6 +47,7 @@ export class OlympicService {
   }
 
   getOlympics() {
+    // le asObservable empeche n'effectuer une modification après (pas de .next possible)
     return this.olympics$.asObservable();
   }
 }
