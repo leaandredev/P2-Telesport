@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Olympic } from 'src/app/core/models/Olympic.interface';
 import { OlympicService } from 'src/app/core/services/olympic.service';
@@ -14,8 +14,9 @@ export class HomeComponent implements OnInit {
   public dataPC: NgxDataArray[] = [];
   viewPC: [number, number] = [700, 400];
   animationPC = true;
-  colorSchemePC = 'vivid';
+  colorSchemePC = 'cool';
   labelsPC = true;
+  maxLabelLength = 20;
 
   constructor(private olympicService: OlympicService) {}
 
@@ -25,9 +26,5 @@ export class HomeComponent implements OnInit {
       this.dataPC = this.olympicService.formatOlympicDataForNgxCharts(data);
     });
     console.log(this.olympics$);
-  }
-
-  medalsFormatter(data: NgxDataArray): string {
-    return '🏅' + data.value;
   }
 }
