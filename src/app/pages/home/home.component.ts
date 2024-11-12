@@ -12,11 +12,6 @@ import { NgxDataArray } from 'src/app/core/type/ngxDataArray.type';
 export class HomeComponent implements OnInit {
   public olympics$: Observable<Olympic[]> = of([]);
   public dataPC: NgxDataArray[] = [];
-  viewPC: [number, number] = [700, 400];
-  animationPC = true;
-  colorSchemePC = 'cool';
-  labelsPC = true;
-  maxLabelLength = 20;
 
   constructor(private olympicService: OlympicService) {}
 
@@ -25,6 +20,5 @@ export class HomeComponent implements OnInit {
     this.olympics$.subscribe((data) => {
       this.dataPC = this.olympicService.formatOlympicDataForNgxCharts(data);
     });
-    console.log(this.olympics$);
   }
 }
