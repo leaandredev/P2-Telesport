@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Olympic } from 'src/app/core/models/Olympic.interface';
 import { OlympicService } from 'src/app/core/services/olympic.service';
+import { NgxLineData } from 'src/app/core/type/ngxDataArray.type';
 
 @Component({
   selector: 'app-country-details',
@@ -17,6 +18,7 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
 })
 export class CountryDetailsComponent implements OnInit {
   public olympic!: Olympic;
+  public dataLineChart: NgxLineData[] = [];
 
   constructor(
     private olympicService: OlympicService,
@@ -35,6 +37,8 @@ export class CountryDetailsComponent implements OnInit {
             throw new Error('Olympic non trouvé');
           }
           this.olympic = olympic;
+          this.dataLineChart =
+            this.olympicService.formatDetailsDataForNgxLineChart(this.olympic);
         });
     }
   }

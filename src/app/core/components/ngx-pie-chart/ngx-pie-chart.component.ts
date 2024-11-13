@@ -10,10 +10,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   styleUrl: './ngx-pie-chart.component.scss',
 })
 export class NgxPieChartComponent {
-  @Input() dataPC: NgxDataArray[] = [];
+  @Input() dataPieChart: NgxDataArray[] = [];
 
-  animationPC = true;
-  colorSchemePC = 'cool';
-  labelsPC = true;
-  maxLabelLength = 20;
+  animationPieChart: boolean = true;
+  colorSchemePC: string = 'cool';
+  labelsPieChart: boolean = true;
+  maxLabelLength: number = 20;
 }

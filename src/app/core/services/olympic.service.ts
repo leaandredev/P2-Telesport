@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Olympic } from '../models/Olympic.interface';
 import { Participation } from '../models/Participation.interface';
-import { NgxDataArray } from '../type/ngxDataArray.type';
+import { NgxDataArray, NgxLineData } from '../type/ngxDataArray.type';
 
 @Injectable({
   providedIn: 'root',
@@ -38,6 +38,20 @@ export class OlympicService {
       name: olympic.country,
       value: this.getTotalMedalsPerCountry(olympic.participations),
     }));
+  }
+
+  formatDetailsDataForNgxLineChart(olympic: Olympic): NgxLineData[] {
+    const seriesData = olympic.participations.map((participation) => ({
+      name: new Date(participation.year, 0),
+      value: participation.medalsCount,
+    }));
+
+    return [
+      {
+        name: olympic.country,
+        series: seriesData,
+      },
+    ];
   }
 
   getTotalMedalsPerCountry(data: Participation[]): number {

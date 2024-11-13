@@ -9,6 +9,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HeaderComponent } from './core/components/header/header.component';
 import { NgxPieChartComponent } from './core/components/ngx-pie-chart/ngx-pie-chart.component';
 import { CountryDetailsComponent } from './pages/country-details/country-details.component';
+import { NgxLineChartComponent } from "./core/components/ngx-line-chart/ngx-line-chart.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CountryDetailsComponent } from './pages/country-details/country-details
     HttpClientModule,
     HeaderComponent,
     NgxPieChartComponent,
-  ],
+    NgxLineChartComponent
+],
   providers: [],
   bootstrap: [AppComponent],
 })

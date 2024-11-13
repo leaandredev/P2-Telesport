@@ -11,14 +11,15 @@ import { NgxDataArray } from 'src/app/core/type/ngxDataArray.type';
 })
 export class HomeComponent implements OnInit {
   public olympics$: Observable<Olympic[]> = of([]);
-  public dataPC: NgxDataArray[] = [];
+  public dataPieChart: NgxDataArray[] = [];
 
   constructor(private olympicService: OlympicService) {}
 
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
     this.olympics$.subscribe((data) => {
-      this.dataPC = this.olympicService.formatOlympicDataForNgxCharts(data);
+      this.dataPieChart =
+        this.olympicService.formatOlympicDataForNgxCharts(data);
     });
   }
 }
