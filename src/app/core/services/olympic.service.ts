@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Olympic } from '../models/Olympic.interface';
 import { Participation } from '../models/Participation.interface';
@@ -28,7 +28,7 @@ export class OlympicService {
     );
   }
 
-  getOlympics() {
+  getOlympics(): Observable<Olympic[]> {
     // le asObservable empeche n'effectuer une modification après (pas de .next possible)
     return this.olympics$.asObservable();
   }
@@ -44,5 +44,11 @@ export class OlympicService {
     return data
       .map((participation) => participation.medalsCount)
       .reduce((a, b) => a + b);
+  }
+
+  getOlympicById(olympicId: number): Observable<Olympic | undefined> {
+    return this.olympics$.pipe(
+      map((olympics) => olympics.find((olympic) => olympic.id === olympicId))
+    );
   }
 }

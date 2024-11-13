@@ -8,9 +8,15 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HeaderComponent } from './core/components/header/header.component';
 import { NgxPieChartComponent } from './core/components/ngx-pie-chart/ngx-pie-chart.component';
+import { CountryDetailsComponent } from './pages/country-details/country-details.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    CountryDetailsComponent,
+    NotFoundComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
