@@ -27,19 +27,17 @@ export class CountryDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const olympicId = this.route.snapshot.params['id'];
+    const countryName = this.route.snapshot.params['id'];
 
-    if (olympicId) {
-      this.olympicService
-        .getOlympicById(Number(olympicId))
-        .subscribe((olympic) => {
-          if (!olympic) {
-            throw new Error('Olympic non trouvé');
-          }
-          this.olympic = olympic;
-          this.dataLineChart =
-            this.olympicService.formatDetailsDataForNgxLineChart(this.olympic);
-        });
+    if (countryName) {
+      this.olympicService.getOlympicByName(countryName).subscribe((olympic) => {
+        if (!olympic) {
+          throw new Error('Olympic non trouvé');
+        }
+        this.olympic = olympic;
+        this.dataLineChart =
+          this.olympicService.formatDetailsDataForNgxLineChart(this.olympic);
+      });
     }
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Olympic } from 'src/app/core/models/Olympic.interface';
 import { OlympicService } from 'src/app/core/services/olympic.service';
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   public olympics$: Observable<Olympic[]> = of([]);
   public dataPieChart: NgxDataArray[] = [];
 
-  constructor(private olympicService: OlympicService) {}
+  constructor(private olympicService: OlympicService, private router: Router) {}
 
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
@@ -21,5 +22,9 @@ export class HomeComponent implements OnInit {
       this.dataPieChart =
         this.olympicService.formatOlympicDataForNgxCharts(data);
     });
+  }
+
+  onCountrySelected(countryName: string): void {
+    this.router.navigate(['/country-details', countryName]);
   }
 }

@@ -60,9 +60,11 @@ export class OlympicService {
       .reduce((a, b) => a + b);
   }
 
-  getOlympicById(olympicId: number): Observable<Olympic | undefined> {
+  getOlympicByName(countryName: string): Observable<Olympic | undefined> {
     return this.olympics$.pipe(
-      map((olympics) => olympics.find((olympic) => olympic.id === olympicId))
+      map((olympics) =>
+        olympics.find((olympic) => olympic.country === countryName)
+      )
     );
   }
 }
