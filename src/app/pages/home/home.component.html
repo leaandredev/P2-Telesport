@@ -1,4 +1,8 @@
-<div class="app-home">
+<div class="app-content">
     <h2>Medals per Country</h2>
-    <app-ngx-pie-chart [dataPC]="dataPC"></app-ngx-pie-chart>
+    <div class="stats-card-container">
+        <app-stats-card title='Number of JOs' [value]="numberOfJOs"></app-stats-card>
+        <app-stats-card title='Number of countries' [value]="numberOfCountries"></app-stats-card>
+    </div>
+    <app-ngx-pie-chart [dataPieChart]="dataPieChart" (selectedCountry)="onCountrySelected($event)"></app-ngx-pie-chart>
 </div>

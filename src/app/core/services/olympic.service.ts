@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Olympic } from '../models/Olympic.interface';
-import { Participation } from '../models/Participation.interface';
-import { NgxDataArray } from '../type/ngxDataArray.type';
+import { NgxDataArray, NgxLineData } from '../type/ngxDataArray.type';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +27,7 @@ export class OlympicService {
     );
   }
 
-  getOlympics() {
+  getOlympics(): Observable<Olympic[]> {
     // le asObservable empeche n'effectuer une modification après (pas de .next possible)
     return this.olympics$.asObservable();
   }
@@ -36,13 +35,58 @@ export class OlympicService {
   formatOlympicDataForNgxCharts(data: Olympic[]): NgxDataArray[] {
     return data.map((olympic) => ({
       name: olympic.country,
-      value: this.getTotalMedalsPerCountry(olympic.participations),
+      value: this.getTotalMedalsPerCountry(olympic),
     }));
   }
 
-  getTotalMedalsPerCountry(data: Participation[]): number {
-    return data
+  formatDetailsDataForNgxLineChart(olympic: Olympic): NgxLineData[] {
+    const seriesData = olympic.participations.map((participation) => ({
+      name: new Date(participation.year, 0),
+      value: participation.medalsCount,
+      city: participation.city,
+      athleteCounts: participation.athleteCount,
+    }));
+
+    return [
+      {
+        name: olympic.country,
+        series: seriesData,
+      },
+    ];
+  }
+
+  getTotalMedalsPerCountry(olympic: Olympic): number {
+    return olympic.participations
       .map((participation) => participation.medalsCount)
       .reduce((a, b) => a + b);
+  }
+
+  getTotalAthletesPerCountry(olympic: Olympic): number {
+    return olympic.participations
+      .map((participation) => participation.athleteCount)
+      .reduce((a, b) => a + b);
+  }
+
+  getOlympicByName(countryName: string): Observable<Olympic | undefined> {
+    return this.olympics$.pipe(
+      map((olympics) =>
+        olympics.find((olympic) => olympic.country === countryName)
+      )
+    );
+  }
+
+  getNumberOfCountries(): number {
+    return this.olympics$.getValue.length;
+  }
+
+  getNumberOfJOs(data: Olympic[]): number {
+    const yearCityPairs = data.flatMap((olympic) =>
+      olympic.participations.map(
+        (participation) => `${participation.year}-${participation.city}`
+      )
+    );
+
+    const uniqueYearCityPairs = new Set(yearCityPairs);
+    return uniqueYearCityPairs.size;
   }
 }

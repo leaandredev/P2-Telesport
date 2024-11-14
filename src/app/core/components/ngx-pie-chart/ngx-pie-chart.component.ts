@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgxDataArray } from '../../type/ngxDataArray.type';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -10,10 +10,15 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   styleUrl: './ngx-pie-chart.component.scss',
 })
 export class NgxPieChartComponent {
-  @Input() dataPC: NgxDataArray[] = [];
+  @Input() dataPieChart: NgxDataArray[] = [];
+  @Output() selectedCountry: EventEmitter<string> = new EventEmitter();
 
-  animationPC = true;
-  colorSchemePC = 'cool';
-  labelsPC = true;
-  maxLabelLength = 20;
+  animationPieChart: boolean = true;
+  colorSchemePC: string = 'cool';
+  labelsPieChart: boolean = true;
+  maxLabelLength: number = 20;
+
+  onCountrySelect(countryData: any): void {
+    this.selectedCountry.emit(countryData.name);
+  }
 }

@@ -8,15 +8,25 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HeaderComponent } from './core/components/header/header.component';
 import { NgxPieChartComponent } from './core/components/ngx-pie-chart/ngx-pie-chart.component';
+import { CountryDetailsComponent } from './pages/country-details/country-details.component';
+import { NgxLineChartComponent } from './core/components/ngx-line-chart/ngx-line-chart.component';
+import { StatsCardComponent } from './core/components/stats-card/stats-card.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    CountryDetailsComponent,
+    NotFoundComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     HeaderComponent,
     NgxPieChartComponent,
+    NgxLineChartComponent,
+    StatsCardComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -14,11 +14,19 @@
         font-weight: bold;
         padding: 10px;
         color: white;
-        padding-left: 30px;
-        padding-right: 30px;
+        width: 30%;
     }
-
-    .stats-card-container {
-        display: block;
+    
+    .return-btn {
+        font-size: 1rem;
+        border: none;
+        border-radius: $border-radius;
+        color: white;
+        font-weight: bold;
+        width: 30%;
+        padding: 10px;
+        background-color: $secondary-color;
+        cursor: pointer;
+        transition: background-color 0.3s;
     }
 }
