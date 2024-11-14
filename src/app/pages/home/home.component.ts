@@ -13,6 +13,8 @@ import { NgxDataArray } from 'src/app/core/type/ngxDataArray.type';
 export class HomeComponent implements OnInit {
   public olympics$: Observable<Olympic[]> = of([]);
   public dataPieChart: NgxDataArray[] = [];
+  public numberOfJOs: number = 0;
+  public numberOfCountries: number = 0;
 
   constructor(private olympicService: OlympicService, private router: Router) {}
 
@@ -21,6 +23,8 @@ export class HomeComponent implements OnInit {
     this.olympics$.subscribe((data) => {
       this.dataPieChart =
         this.olympicService.formatOlympicDataForNgxCharts(data);
+      this.numberOfCountries = data.length;
+      this.numberOfJOs = this.olympicService.getNumberOfJOs(data);
     });
   }
 

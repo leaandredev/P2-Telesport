@@ -1,8 +1,8 @@
 <div class="app-content">
     <h2>Medals per Country</h2>
     <div class="stats-card-container">
-        <app-stats-card title='Number of JOs' value="10"></app-stats-card>
-        <app-stats-card title='Number of countries' value="5"></app-stats-card>
+        <app-stats-card title='Number of JOs' [value]="numberOfJOs"></app-stats-card>
+        <app-stats-card title='Number of countries' [value]="numberOfCountries"></app-stats-card>
     </div>
     <app-ngx-pie-chart [dataPieChart]="dataPieChart" (selectedCountry)="onCountrySelected($event)"></app-ngx-pie-chart>
 </div>
