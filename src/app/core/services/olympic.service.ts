@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Olympic } from '../models/Olympic.interface';
-import { Participation } from '../models/Participation.interface';
 import { NgxDataArray, NgxLineData } from '../type/ngxDataArray.type';
 
 @Injectable({
@@ -36,7 +35,7 @@ export class OlympicService {
   formatOlympicDataForNgxCharts(data: Olympic[]): NgxDataArray[] {
     return data.map((olympic) => ({
       name: olympic.country,
-      value: this.getTotalMedalsPerCountry(olympic.participations),
+      value: this.getTotalMedalsPerCountry(olympic),
     }));
   }
 
@@ -54,9 +53,15 @@ export class OlympicService {
     ];
   }
 
-  getTotalMedalsPerCountry(data: Participation[]): number {
-    return data
+  getTotalMedalsPerCountry(olympic: Olympic): number {
+    return olympic.participations
       .map((participation) => participation.medalsCount)
+      .reduce((a, b) => a + b);
+  }
+
+  getTotalAthletesPerCountry(olympic: Olympic): number {
+    return olympic.participations
+      .map((participation) => participation.athleteCount)
       .reduce((a, b) => a + b);
   }
 
