@@ -43,6 +43,8 @@ export class OlympicService {
     const seriesData = olympic.participations.map((participation) => ({
       name: new Date(participation.year, 0),
       value: participation.medalsCount,
+      city: participation.city,
+      athleteCounts: participation.athleteCount,
     }));
 
     return [
