@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NgxDataArray } from '../../type/ngxDataArray.type';
+import { NgxDataArray } from '../../../core/type/ngxDataArray.type';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({

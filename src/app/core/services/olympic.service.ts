@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { catchError, delay, map, tap, timeout } from 'rxjs/operators';
 import { Olympic } from '../models/Olympic.interface';
 import { NgxDataArray, NgxLineData } from '../type/ngxDataArray.type';
 
@@ -15,14 +15,23 @@ export class OlympicService {
   constructor(private http: HttpClient) {}
 
   loadInitialData() {
+    if (!navigator.onLine) {
+      return throwError(() => 'You are offline.');
+    }
+
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
-      tap((data) => this.olympics$.next(data)),
+      timeout(5000),
+      tap((data) => {
+        console.log(data);
+        if (!data || data.length === 0) {
+          throw new Error('File is empty.');
+        } else {
+          this.olympics$.next(data);
+        }
+      }),
       catchError((error, caught) => {
-        // TODO: improve error handling
-        console.error(error);
-        // can be useful to end loading state and let the user know something went wrong
         this.olympics$.next([]);
-        return caught;
+        return throwError(() => error);
       })
     );
   }

@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { NgxDataArray, NgxLineData } from '../../type/ngxDataArray.type';
+import {
+  NgxDataArray,
+  NgxLineData,
+} from '../../../core/type/ngxDataArray.type';
 
 @Component({
   selector: 'app-ngx-line-chart',
