@@ -11,6 +11,7 @@ import { NgxPieChartComponent } from './core/components/ngx-pie-chart/ngx-pie-ch
 import { CountryDetailsComponent } from './pages/country-details/country-details.component';
 import { NgxLineChartComponent } from './core/components/ngx-line-chart/ngx-line-chart.component';
 import { StatsCardComponent } from './core/components/stats-card/stats-card.component';
+import { LoadingSpinnerComponent } from './core/components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { StatsCardComponent } from './core/components/stats-card/stats-card.comp
     NgxPieChartComponent,
     NgxLineChartComponent,
     StatsCardComponent,
+    LoadingSpinnerComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
