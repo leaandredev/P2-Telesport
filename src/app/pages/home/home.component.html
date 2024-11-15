@@ -1,8 +1,21 @@
 <div class="app-content">
-    <h2>Medals per Country</h2>
-    <div class="stats-card-container">
-        <app-stats-card title='Number of JOs' [value]="numberOfJOs"></app-stats-card>
-        <app-stats-card title='Number of countries' [value]="numberOfCountries"></app-stats-card>
+    <div *ngIf="errorMessage">
+        {{ errorMessage }}
     </div>
-    <app-ngx-pie-chart [dataPieChart]="dataPieChart" (selectedCountry)="onCountrySelected($event)"></app-ngx-pie-chart>
+
+    <div *ngIf="!errorMessage">
+        <div *ngIf="loading">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+
+        <div *ngIf="!loading">
+            <h2>Medals per Country</h2>
+            <div class="stats-card-container">
+                <app-stats-card title="Number of JOs" [value]="numberOfJOs"></app-stats-card>
+                <app-stats-card title="Number of countries" [value]="numberOfCountries"></app-stats-card>
+            </div>
+            <app-ngx-pie-chart [dataPieChart]="dataPieChart"
+                (selectedCountry)="onCountrySelected($event)"></app-ngx-pie-chart>
+        </div>
+    </div>
 </div>

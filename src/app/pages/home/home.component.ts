@@ -15,16 +15,27 @@ export class HomeComponent implements OnInit {
   public dataPieChart: NgxDataArray[] = [];
   public numberOfJOs: number = 0;
   public numberOfCountries: number = 0;
+  public errorMessage: string | null = null;
+  public loading: boolean = false;
 
   constructor(private olympicService: OlympicService, private router: Router) {}
 
   ngOnInit(): void {
+    this.loading = true;
+
     this.olympics$ = this.olympicService.getOlympics();
-    this.olympics$.subscribe((data) => {
-      this.dataPieChart =
-        this.olympicService.formatOlympicDataForNgxCharts(data);
-      this.numberOfCountries = data.length;
-      this.numberOfJOs = this.olympicService.getNumberOfJOs(data);
+    this.olympics$.subscribe({
+      next: (data) => {
+        this.dataPieChart =
+          this.olympicService.formatOlympicDataForNgxCharts(data);
+        this.numberOfCountries = data.length;
+        this.numberOfJOs = this.olympicService.getNumberOfJOs(data);
+        this.loading = false;
+      },
+      error: (error: any) => {
+        this.errorMessage = error.message;
+        this.loading = false;
+      },
     });
   }
 

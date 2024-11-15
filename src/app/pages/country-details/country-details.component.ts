@@ -17,6 +17,8 @@ export class CountryDetailsComponent implements OnInit {
   public numberOfEntries: number = 0;
   public totalNumberOfMedals: number = 0;
   public totalNumberOfAthletes: number = 0;
+  public errorMessage: string | null = null;
+  public loading: boolean = false;
 
   constructor(
     private olympicService: OlympicService,
@@ -24,12 +26,14 @@ export class CountryDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loading = true;
     const countryName = this.route.snapshot.params['id'];
 
     if (countryName) {
       this.olympicService.getOlympicByName(countryName).subscribe((olympic) => {
         if (!olympic) {
-          throw new Error('Olympic non trouvé');
+          this.errorMessage = `Country ${countryName} not found.`;
+          return;
         }
         this.olympic = olympic;
 
@@ -43,7 +47,11 @@ export class CountryDetailsComponent implements OnInit {
 
         this.totalNumberOfAthletes =
           this.olympicService.getTotalAthletesPerCountry(this.olympic);
+        this.loading = false;
       });
+    } else {
+      this.errorMessage = 'CountryName URL parameter is missing.';
+      this.loading = false;
     }
   }
 }
