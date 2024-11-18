@@ -1,0 +1,27 @@
+@import '../../../../styles/variables.scss';
+
+.app-content {
+    color: $secondary-color;
+    text-align: center;
+    align-items: center;
+
+    .stats-card-container {
+        display: block;
+    }
+
+    h2 {
+        display: inline-block;
+        width: 30%;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        background-color: $primary-color;
+    }
+
+    .app-error {
+        color: $error-color
+    }
+}

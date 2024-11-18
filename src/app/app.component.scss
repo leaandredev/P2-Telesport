@@ -1,31 +1,32 @@
 @import '../styles/variables.scss';
 
-// Styles globaux
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Roboto, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
     color: $text-color;
     background-color: $secondary-color;
 }
 
-// Conteneur principal
 .app-container {
     max-width: 800px;
     margin: 2rem auto;
     padding: 1rem;
-    background-color: white;
     border-radius: $border-radius;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    text-align: center;
 
-    // En-tête
     .app-header {
-        text-align: center;
-        color: $primary-color;
         margin-bottom: 1.5rem;
+        color: $primary-color;
+    }
+
+    .app-error {
+        color: $error-color;
     }
 }

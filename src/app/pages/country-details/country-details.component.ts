@@ -5,11 +5,10 @@ import {
   OnInit,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'd3';
 import { Subscription } from 'rxjs';
 import { Olympic } from 'src/app/core/models/Olympic.interface';
 import { OlympicService } from 'src/app/core/services/olympic.service';
-import { NgxLineData } from 'src/app/core/type/ngxDataArray.type';
+import { NgxLineData } from 'src/app/core/type/ngxLineData.type';
 
 @Component({
   selector: 'app-country-details',

@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NgxDataArray } from '../../../core/type/ngxDataArray.type';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgxPieData } from '../../../core/type/ngxPieData.type';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
@@ -10,7 +10,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   styleUrl: './ngx-pie-chart.component.scss',
 })
 export class NgxPieChartComponent {
-  @Input() dataPieChart: NgxDataArray[] = [];
+  @Input() dataPieChart: NgxPieData[] = [];
   @Output() selectedCountry: EventEmitter<string> = new EventEmitter();
 
   animationPieChart: boolean = true;
