@@ -11,6 +11,7 @@ import { CountryDetailsComponent } from './pages/country-details/country-details
 import { NgxLineChartComponent } from './shared/components/ngx-line-chart/ngx-line-chart.component';
 import { StatsCardComponent } from './shared/components/stats-card/stats-card.component';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
+import { PageLayoutComponent } from './shared/components/page-layout/page-layout.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loa
     NgxLineChartComponent,
     StatsCardComponent,
     LoadingSpinnerComponent,
+    PageLayoutComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
