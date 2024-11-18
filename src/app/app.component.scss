@@ -1,6 +1,5 @@
 @import '../styles/variables.scss';
 
-// Styles globaux
 * {
     box-sizing: border-box;
     margin: 0;
@@ -13,7 +12,6 @@ body {
     background-color: $secondary-color;
 }
 
-// Conteneur principal
 .app-container {
     max-width: 800px;
     margin: 2rem auto;
@@ -22,7 +20,6 @@ body {
     border-radius: $border-radius;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
-    // En-tête
     .app-header {
         text-align: center;
         color: $primary-color;

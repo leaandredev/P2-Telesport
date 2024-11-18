@@ -1,9 +1,10 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { catchError, delay, map, tap, timeout } from 'rxjs/operators';
+import { catchError, map, tap, timeout } from 'rxjs/operators';
 import { Olympic } from '../models/Olympic.interface';
-import { NgxDataArray, NgxLineData } from '../type/ngxDataArray.type';
+import { NgxPieData } from '../type/ngxPieData.type';
+import { NgxLineData } from '../type/ngxLineData.type';
 
 @Injectable({
   providedIn: 'root',
@@ -37,11 +38,10 @@ export class OlympicService {
   }
 
   getOlympics(): Observable<Olympic[]> {
-    // le asObservable empeche n'effectuer une modification après (pas de .next possible)
     return this.olympics$.asObservable();
   }
 
-  formatOlympicDataForNgxCharts(data: Olympic[]): NgxDataArray[] {
+  formatOlympicDataForNgxPieCharts(data: Olympic[]): NgxPieData[] {
     return data.map((olympic) => ({
       name: olympic.country,
       value: this.getTotalMedalsPerCountry(olympic),

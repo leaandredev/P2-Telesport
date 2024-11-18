@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
         error: (error) => {
           if (error.status === 404) {
             this.error =
-              "l'URL de récupération des données n'a pas été trouvée.";
+              "Wrong URL for JSON file.";
           } else {
             this.error = error.message;
           }
