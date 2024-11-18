@@ -1,7 +1,5 @@
 <div class="app-content">
-    <div *ngIf="errorMessage">
-        {{ errorMessage }}
-    </div>
+    <div class="app-error" *ngIf="errorMessage">{{ errorMessage }}</div>
 
     <div *ngIf="!errorMessage">
         <div *ngIf="loading">

@@ -1,5 +1,5 @@
 <div class="app-container">
     <app-header class="app-header"></app-header>
-    <div *ngIf="error">{{error}}</div>
+    <div class="app-error" *ngIf="error">{{error}}</div>
     <router-outlet *ngIf="!error"></router-outlet>
 </div>

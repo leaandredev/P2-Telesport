@@ -19,10 +19,14 @@ body {
     border-radius: $border-radius;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background-color: white;
+    text-align: center;
 
     .app-header {
-        text-align: center;
         margin-bottom: 1.5rem;
         color: $primary-color;
+    }
+
+    .app-error {
+        color: $error-color;
     }
 }
