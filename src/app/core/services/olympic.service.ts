@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, delay, map, tap, timeout } from 'rxjs/operators';
+import { catchError, map, tap, timeout } from 'rxjs/operators';
 import { Olympic } from '../models/Olympic.interface';
 import { NgxPieData } from '../type/ngxPieData.type';
 import { NgxLineData } from '../type/ngxLineData.type';
@@ -21,7 +21,6 @@ export class OlympicService {
     }
 
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
-      delay(6000),
       timeout(5000),
       tap((data) => {
         console.log(data);
