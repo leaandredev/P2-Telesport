@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgxPieData } from '../../../core/type/ngxPieData.type';
+import { NgxPieData } from '../../../core/types/ngxPieData.type';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({

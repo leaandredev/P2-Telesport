@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map, tap, timeout } from 'rxjs/operators';
 import { Olympic } from '../models/Olympic.interface';
-import { NgxPieData } from '../type/ngxPieData.type';
-import { NgxLineData } from '../type/ngxLineData.type';
+import { NgxPieData } from '../types/ngxPieData.type';
+import { NgxLineData } from '../types/ngxLineData.type';
 
 @Injectable({
   providedIn: 'root',

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
 import { Olympic } from 'src/app/core/models/Olympic.interface';
 import { OlympicService } from 'src/app/core/services/olympic.service';
-import { NgxPieData } from 'src/app/core/type/ngxPieData.type';
+import { NgxPieData } from 'src/app/core/types/ngxPieData.type';
 
 @Component({
   selector: 'app-home',
