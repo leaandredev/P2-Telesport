@@ -1,0 +1,7 @@
+<ngx-charts-pie-chart [results]="dataPieChart" [animations]="animationPieChart" [scheme]="colorSchemePC"
+    [labels]="labelsPieChart" [maxLabelLength]="maxLabelLength" (select)="onCountrySelect($event)">
+    <ng-template #tooltipTemplate let-model="model">
+        <span>{{ model.name }}</span><br>
+        <span>🏅 {{ model.value }}</span>
+    </ng-template>
+</ngx-charts-pie-chart>

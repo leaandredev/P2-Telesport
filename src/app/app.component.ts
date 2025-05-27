@@ -8,9 +8,23 @@ import { OlympicService } from './core/services/olympic.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  public error: string | null = null;
+
   constructor(private olympicService: OlympicService) {}
 
   ngOnInit(): void {
-    this.olympicService.loadInitialData().pipe(take(1)).subscribe();
+    this.olympicService
+      .loadInitialData()
+      .pipe(take(1))
+      .subscribe({
+        error: (error) => {
+          if (error.status === 404) {
+            this.error =
+              "Wrong URL for JSON file.";
+          } else {
+            this.error = error.message;
+          }
+        },
+      });
   }
 }

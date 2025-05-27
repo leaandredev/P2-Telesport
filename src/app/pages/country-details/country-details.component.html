@@ -1,0 +1,9 @@
+<app-page-layout [errorMessage]="errorMessage" [loading]="loading" [subTitle]="olympic.country">
+    <div class="stats-card-container">
+        <app-stats-card title='Number of entries' [value]="numberOfEntries"></app-stats-card>
+        <app-stats-card title='Total number medals' [value]="totalNumberOfMedals"></app-stats-card>
+        <app-stats-card title='Total number of athletes' [value]="totalNumberOfAthletes"></app-stats-card>
+    </div>
+    <app-ngx-line-chart [dataLineChart]="dataLineChart"></app-ngx-line-chart>
+    <button class="return-btn btn" type="button" routerLink="">Return</button>
+</app-page-layout>

@@ -1,0 +1,16 @@
+@import '../../../../styles/variables.scss';
+
+.stats-card {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid $primary-color;
+    border-radius: $border-radius;
+    font-size: 0.9rem;
+    color: $text-color;
+    text-align: center;
+    
+    .stats-value {
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,32 @@
+@import '../styles/variables.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    color: $text-color;
+    background-color: $secondary-color;
+}
+
+.app-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: $border-radius;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    text-align: center;
+
+    .app-header {
+        margin-bottom: 1.5rem;
+        color: $primary-color;
+    }
+
+    .app-error {
+        color: $error-color;
+    }
+}

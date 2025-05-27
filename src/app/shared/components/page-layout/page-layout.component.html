@@ -1,0 +1,14 @@
+<div class="app-content">
+    <div class="app-error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+    <div *ngIf="!errorMessage">
+        <div *ngIf="loading">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+
+        <div *ngIf="!loading">
+            <h2>{{ subTitle }}</h2>
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

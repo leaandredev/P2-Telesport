@@ -1,3 +1,7 @@
-<h2>Olympic games app</h2>
-<hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
+<app-page-layout [errorMessage]="errorMessage" [loading]="loading" subTitle="Medals per Country">
+    <div class="stats-card-container">
+        <app-stats-card title="Number of JOs" [value]="numberOfJOs"></app-stats-card>
+        <app-stats-card title="Number of countries" [value]="numberOfCountries"></app-stats-card>
+    </div>
+    <app-ngx-pie-chart [dataPieChart]="dataPieChart" (selectedCountry)="onCountrySelected($event)"></app-ngx-pie-chart>
+</app-page-layout>
